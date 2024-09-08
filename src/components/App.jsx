@@ -16,13 +16,18 @@ words: [...prevState.words, newWord]
  }
 })
 }
+
+handleDelWord=(wordId)=>{
+  this.setState(prevState=>({words: prevState.words.filter(word=>word.id !==wordId),
+  }))
+}
 render() {
     return (
       <div>
     <WordForm 
     handleAddWord={this.handleAddWord}/>
         <WordFilter/>
-        <WordList/>
+        <WordList  words={this.state.words} handleDelWord={this.handleDelWord}/>
       </div>
     )
   }
